@@ -22,7 +22,9 @@ module Algorithms
           left -= 1
           right += 1
         end
-        [left + 1, right - left - 1]  # 返回回文子串的起始和长度
+        # 跳出循环时，left 和 right 已经超出回文范围
+        # 回文的起点是 left + 1，长度是 right - left - 1
+        [left + 1, right - left - 1]
       end
 
       (0...s.length).each do |i|
