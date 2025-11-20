@@ -13,7 +13,7 @@ module Algorithms
     #
     # @param s [String]
     # @return [Integer]
-    def self.length_of_longest_substring(s)
+    def length_of_longest_substring(s)
       last_index = {}  # 记录字符上一次出现的下标：char => index
       left = 0         # 当前窗口的左边界
       max_len = 0      # 记录历史最长无重复子串长度

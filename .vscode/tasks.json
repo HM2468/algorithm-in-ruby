@@ -1,24 +1,29 @@
-// .vscode/tasks.json
 {
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "rspec: current file",
+      "type": "shell",
+      "command": "${env:HOME}/.rbenv/shims/bundle",
+      "args": ["exec", "rspec", "${relativeFile}"],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
       "label": "rspec: all",
       "type": "shell",
-      "command": "bundle",
+      "command": "${env:HOME}/.rbenv/shims/bundle",
       "args": ["exec", "rspec"],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
       "group": {
         "kind": "test",
         "isDefault": true
       },
-      "problemMatcher": []
-    },
-    {
-      "label": "rspec: current file",
-      "type": "shell",
-      "command": "bundle",
-      "args": ["exec", "rspec", "${file}"],
-      "group": "test",
       "problemMatcher": []
     }
   ]
