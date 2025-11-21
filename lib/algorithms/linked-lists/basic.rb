@@ -1,3 +1,5 @@
+# file: lib/algorithms/linked-lists/basic.rb
+
 module Algorithms
   module LinkedLists
     Node = Struct.new(:val, :next)
@@ -43,6 +45,40 @@ module Algorithms
         current = current.next
       end
       ids
+    end
+
+    # 构造带环链表：tail.next 指向下标为 pos 的节点
+    # pos = -1 / nil 表示无环
+    def build_cyclic_list(values, pos)
+      head = build_linked_list(values)
+      return head if head.nil? || pos.nil? || pos < 0
+
+      index     = 0
+      current   = head
+      entry     = nil
+      tail      = nil
+
+      while current
+        entry = current if index == pos
+        tail  = current
+        current = current.next
+        index += 1
+      end
+
+      raise ArgumentError, "pos out of range" unless entry
+
+      tail.next = entry
+      head
+    end
+
+    def node_at(head, index)
+      current = head
+      i = 0
+      while current && i < index
+        current = current.next
+        i += 1
+      end
+      current
     end
   end
 end

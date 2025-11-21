@@ -7,5 +7,6 @@ ROOT = File.expand_path("..", __dir__)
 $LOAD_PATH.unshift(File.join(ROOT, "lib"))
 
 RSpec.configure do |config|
-  # 原来 RSpec 自动生成的一堆配置直接保留
+  config.color = true
+  config.default_formatter = "doc" if config.files_to_run.one?
 end
