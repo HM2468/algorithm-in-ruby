@@ -1,7 +1,8 @@
 module Algorithms
   module Strings
     # Require all string-related algorithms here
-    require_relative "algorithms/strings/string_algorithm"
+    require_relative "algorithms/strings/longest_palindrome"
+    require_relative "algorithms/strings/longest_substring"
   end
 
   module LinkedLists
