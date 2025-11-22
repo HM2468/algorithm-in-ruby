@@ -7,5 +7,6 @@ module Algorithms
   module LinkedLists
     require_relative "algorithms/linked-lists/basic"
     require_relative "algorithms/linked-lists/operations"
+    require_relative "algorithms/linked-lists/reverse_k_group"
   end
 end

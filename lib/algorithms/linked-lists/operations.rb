@@ -130,6 +130,5 @@ module Algorithms
       # 可选：再反转 second_half_reversed 还原原链表，这里略过
       true
     end
-
   end
 end
