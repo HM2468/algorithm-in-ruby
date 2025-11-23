@@ -24,6 +24,7 @@ module Algorithms
     require_relative "algorithms/linked_stack/stack"
     require_relative "algorithms/linked_stack/mini_stack"
     require_relative "algorithms/linked_stack/valid_parentheses"
+    require_relative "algorithms/linked_stack/daily_temperature"
   end
 
   module BinaryTree
