@@ -13,6 +13,7 @@ module Algorithms
     require_relative "algorithms/linked_lists/reverse_linked_list"
     require_relative "algorithms/linked_lists/reverse_k_group"
     require_relative "algorithms/linked_lists/recursive_print"
+    require_relative "algorithms/linked_lists/remove_nth_node_from_end"
   end
 
   module LinkedQueue

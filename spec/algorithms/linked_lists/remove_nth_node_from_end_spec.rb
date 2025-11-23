@@ -4,7 +4,7 @@ require "spec_helper"
 RSpec.describe "remove_nth_from_end" do
   include Algorithms::LinkedLists
 
-  describe "#remove_nth_from_end" do
+  describe "#remove_nth_node_from_end" do
     context "when the list has multiple nodes" do
       it "removes the nth node from the end in the middle of the list" do
         head = build_linked_list([1, 2, 3, 4, 5])
