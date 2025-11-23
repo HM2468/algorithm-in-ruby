@@ -19,6 +19,10 @@ module Algorithms
         @top = @top.next
         val
       end
+
+      def empty?
+        @top.nil?
+      end
     end
   end
 end

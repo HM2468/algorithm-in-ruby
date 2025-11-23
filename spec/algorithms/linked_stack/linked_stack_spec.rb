@@ -20,6 +20,10 @@ RSpec.describe Algorithms::LinkedStack::Stack do
       top = stack.instance_variable_get(:@top)
       expect(top).to be_nil
     end
+
+    it 'is empty when initialized' do
+      expect(stack.empty?).to be true
+    end
   end
 
   describe '#push' do
@@ -71,6 +75,11 @@ RSpec.describe Algorithms::LinkedStack::Stack do
         top = stack.instance_variable_get(:@top)
         expect(top).to be_nil
       end
+
+      it 'keeps empty? returning true' do
+        3.times { stack.pop }
+        expect(stack.empty?).to be true
+      end
     end
 
     context 'when stack has one element' do
@@ -85,6 +94,7 @@ RSpec.describe Algorithms::LinkedStack::Stack do
         expect(stack.pop).to be_nil
         top = stack.instance_variable_get(:@top)
         expect(top).to be_nil
+        expect(stack.empty?).to be true
       end
     end
 
@@ -127,6 +137,47 @@ RSpec.describe Algorithms::LinkedStack::Stack do
     end
   end
 
+  describe '#empty?' do
+    it 'returns true for a newly created stack' do
+      expect(stack.empty?).to be true
+    end
+
+    it 'returns false after pushing an element' do
+      stack.push(42)
+      expect(stack.empty?).to be false
+    end
+
+    it 'returns true again after all elements are popped' do
+      stack.push(1)
+      stack.push(2)
+      expect(stack.empty?).to be false
+
+      stack.pop
+      expect(stack.empty?).to be false
+
+      stack.pop
+      expect(stack.empty?).to be true
+    end
+
+    it 'works correctly under interleaved push/pop' do
+      expect(stack.empty?).to be true
+
+      stack.push(1)
+      expect(stack.empty?).to be false
+
+      stack.pop
+      expect(stack.empty?).to be true
+
+      stack.push(2)
+      stack.push(3)
+      expect(stack.empty?).to be false
+
+      stack.pop
+      stack.pop
+      expect(stack.empty?).to be true
+    end
+  end
+
   describe 'interleaved push and pop' do
     it 'handles push/pop in mixed order correctly' do
       stack.push(1)
@@ -139,6 +190,7 @@ RSpec.describe Algorithms::LinkedStack::Stack do
       expect(stack.pop).to eq(3)
       expect(stack.pop).to eq(1)
       expect(stack.pop).to be_nil
+      expect(stack.empty?).to be true
     end
 
     it 'supports multiple cycles of filling and draining the stack' do
@@ -155,6 +207,7 @@ RSpec.describe Algorithms::LinkedStack::Stack do
 
         # 每一轮结束后，栈应为空
         expect(stack.pop).to be_nil
+        expect(stack.empty?).to be true
       end
     end
   end
@@ -164,6 +217,7 @@ RSpec.describe Algorithms::LinkedStack::Stack do
       n = 1000
 
       n.times { |i| stack.push(i) }
+      expect(stack.empty?).to be false
 
       # 弹出前一半
       (n / 2).times do |i|
@@ -178,9 +232,10 @@ RSpec.describe Algorithms::LinkedStack::Stack do
         # no-op
       end
 
-      # 最后 top 应该回到 nil
+      # 最后 top 应该回到 nil，empty? 应为 true
       top = stack.instance_variable_get(:@top)
       expect(top).to be_nil
+      expect(stack.empty?).to be true
     end
   end
 
