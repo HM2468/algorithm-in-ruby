@@ -15,12 +15,16 @@ module Algorithms
     require_relative "algorithms/linked_lists/recursive_print"
   end
 
+  module LinkedQueue
+    require_relative "algorithms/linked_queue/queue"
+  end
+
+  module LinkedStack
+    require_relative "algorithms/linked_stack/stack"
+  end
+
   module BinaryTree
     require_relative "algorithms/binary_tree/basic"
     require_relative "algorithms/binary_tree/depth_first_traversal"
-  end
-
-  module LinkedQueue
-    require_relative "algorithms/linked_queue/queue"
   end
 end
