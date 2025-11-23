@@ -9,37 +9,39 @@ module Algorithms
     - 后序遍历（Postorder）：L -> R -> D
 =end
 
-    # 前序遍历：D -> L -> R
-    def preorder_recursively(root)
-      return [] if root.nil?
+   module Recursion
+      # 前序遍历：D -> L -> R
+      def preorder(root)
+        return [] if root.nil?
 
-      result = []
-      result << root.val                  # 1. 访问D
-      result.concat(preorder(root.left))  # 2. 遍历L子树
-      result.concat(preorder(root.right)) # 3. 遍历R子树
-      result
-    end
+        result = []
+        result << root.val                  # 1. 访问D
+        result.concat(preorder(root.left))  # 2. 遍历L子树
+        result.concat(preorder(root.right)) # 3. 遍历R子树
+        result
+      end
 
-    # 中序遍历：L -> D -> R
-    def inorder_recursively(root)
-      return [] if root.nil?
+      # 中序遍历：L -> D -> R
+      def inorder(root)
+        return [] if root.nil?
 
-      result = []
-      result.concat(inorder(root.left))   # 1. 遍历L子树
-      result << root.val                  # 2. 访问D
-      result.concat(inorder(root.right))  # 3. 遍历R子树
-      result
-    end
+        result = []
+        result.concat(inorder(root.left))   # 1. 遍历L子树
+        result << root.val                  # 2. 访问D
+        result.concat(inorder(root.right))  # 3. 遍历R子树
+        result
+      end
 
-    # 后序遍历：L -> R -> D
-    def postorder_recursively(root)
-      return [] if root.nil?
+      # 后序遍历：L -> R -> D
+      def postorder(root)
+        return [] if root.nil?
 
-      result = []
-      result.concat(postorder(root.left))  # 1. 遍历L子树
-      result.concat(postorder(root.right)) # 2. 遍历R子树
-      result << root.val                   # 3. 最后访问D
-      result
+        result = []
+        result.concat(postorder(root.left))  # 1. 遍历L子树
+        result.concat(postorder(root.right)) # 2. 遍历R子树
+        result << root.val                   # 3. 最后访问D
+        result
+      end
     end
   end
 end
