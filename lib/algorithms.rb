@@ -12,5 +12,6 @@ module Algorithms
     require_relative "algorithms/linked-lists/palindrome"
     require_relative "algorithms/linked-lists/reverse_linked_list"
     require_relative "algorithms/linked-lists/reverse_k_group"
+    require_relative "algorithms/linked-lists/recursive_print"
   end
 end

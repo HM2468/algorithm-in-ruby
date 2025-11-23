@@ -1,5 +1,5 @@
 module Algorithms
   module LinkedLists
-    Node = Struct.new(:val, :right, :left)
+    Node = Struct.new(:val, :left, :right)
   end
 end
