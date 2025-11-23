@@ -1,5 +1,5 @@
 module Algorithms
-  module LinkedLists
+  module BinaryTree
     Node = Struct.new(:val, :left, :right)
   end
 end
