@@ -21,6 +21,7 @@ module Algorithms
 
   module LinkedStack
     require_relative "algorithms/linked_stack/stack"
+    require_relative "algorithms/linked_stack/mini_stack"
     require_relative "algorithms/linked_stack/valid_parentheses"
   end
 

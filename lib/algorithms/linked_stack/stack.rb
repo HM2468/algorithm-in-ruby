@@ -23,6 +23,11 @@ module Algorithms
       def empty?
         @top.nil?
       end
+
+      def peek
+        return nil if @top.nil?
+        @top.val
+      end
     end
   end
 end
