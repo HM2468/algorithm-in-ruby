@@ -1,7 +1,4 @@
 # lib/algorithms/strings/longest_palindronme.rb
-
-module Algorithms
-  module Strings
 =begin
   Longest palindromic Substring
   给定一个字符串 s，找到 s 中最长的回文子串。
@@ -9,6 +6,9 @@ module Algorithms
     - "babad" => "bab" 或 "aba"
     - "cbbd"  => "bb"
 =end
+
+module Algorithms
+  module Strings
 
     # @param s [String]
     # @return [String]

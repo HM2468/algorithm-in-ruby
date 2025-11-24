@@ -1,7 +1,4 @@
 # lib/algorithms/strings/longest_substring.rb
-
-module Algorithms
-  module Strings
 =begin
     Longest Substring Without Repeating Characters
     给定一个字符串 s，返回其中「不含重复字符的最长子串」的长度。
@@ -21,7 +18,8 @@ module Algorithms
     4. 遍历结束后，max_len 即为所求结果。
 =end
 
-
+module Algorithms
+  module Strings
     # @param s [String]
     # @return [Integer]
     def length_of_longest_substring(s)
