@@ -2,20 +2,24 @@
 require "spec_helper"
 
 RSpec.describe Algorithms::BinaryTree do
-  include described_class::RecursionDFS
   let(:node) { described_class::Node }
+  let(:iteration) do
+    Class.new do
+      include Algorithms::BinaryTree::IterationDFS
+    end.new
+  end
 
   describe '#preorder' do
     context 'when the tree is empty (root is nil)' do
       it 'returns an empty array' do
-        expect(preorder(nil)).to eq([])
+        expect(iteration.preorder(nil)).to eq([])
       end
     end
 
     context 'when the tree has only one node' do
       it 'returns an array with just the root value' do
         root = node.new(1, nil, nil)
-        expect(preorder(root)).to eq([1])
+        expect(iteration.preorder(root)).to eq([1])
       end
     end
 
@@ -40,15 +44,15 @@ RSpec.describe Algorithms::BinaryTree do
       end
 
       it 'visits nodes in D-L-R order' do
-        expect(preorder(root)).to eq([1, 2, 4, 5, 3, 6])
+        expect(iteration.preorder(root)).to eq([1, 2, 4, 5, 3, 6])
       end
 
       it 'visits nodes in L-D-R order' do
-        expect(inorder(root)).to eq([4,2,5,1,6,3])
+        expect(iteration.inorder(root)).to eq([4,2,5,1,6,3])
       end
 
       it 'visits nodes in L-R-D order' do
-        expect(postorder(root)).to eq([4,5,2,6,3,1])
+        expect(iteration.postorder(root)).to eq([4,5,2,6,3,1])
       end
     end
 
@@ -65,7 +69,7 @@ RSpec.describe Algorithms::BinaryTree do
       end
 
       it 'still follows D-L-R (which degenerates to root-right chain)' do
-        expect(preorder(root)).to eq([1, 2, 3])
+        expect(iteration.preorder(root)).to eq([1, 2, 3])
       end
     end
   end
@@ -73,14 +77,14 @@ RSpec.describe Algorithms::BinaryTree do
   describe '#inorder' do
     context 'when the tree is empty' do
       it 'returns an empty array' do
-        expect(inorder(nil)).to eq([])
+        expect(iteration.inorder(nil)).to eq([])
       end
     end
 
     context 'when the tree has only one node' do
       it 'returns an array with just the root value' do
         root = node.new(1, nil, nil)
-        expect(inorder(root)).to eq([1])
+        expect(iteration.inorder(root)).to eq([1])
       end
     end
 
@@ -105,7 +109,7 @@ RSpec.describe Algorithms::BinaryTree do
       end
 
       it 'visits nodes in L-D-R order' do
-        expect(inorder(root)).to eq([4, 2, 5, 1, 6, 3])
+        expect(iteration.inorder(root)).to eq([4, 2, 5, 1, 6, 3])
       end
     end
 
@@ -124,7 +128,7 @@ RSpec.describe Algorithms::BinaryTree do
       end
 
       it 'returns nodes from top to bottom in order' do
-        expect(inorder(root)).to eq([1, 2, 3])
+        expect(iteration.inorder(root)).to eq([1, 2, 3])
       end
     end
   end
@@ -132,14 +136,14 @@ RSpec.describe Algorithms::BinaryTree do
   describe '#postorder' do
     context 'when the tree is empty' do
       it 'returns an empty array' do
-        expect(postorder(nil)).to eq([])
+        expect(iteration.postorder(nil)).to eq([])
       end
     end
 
     context 'when the tree has only one node' do
       it 'returns an array with just the root value' do
         root = node.new(1, nil, nil)
-        expect(postorder(root)).to eq([1])
+        expect(iteration.postorder(root)).to eq([1])
       end
     end
 
@@ -164,7 +168,7 @@ RSpec.describe Algorithms::BinaryTree do
       end
 
       it 'visits nodes in L-R-D order' do
-        expect(postorder(root)).to eq([4, 5, 2, 6, 3, 1])
+        expect(iteration.postorder(root)).to eq([4, 5, 2, 6, 3, 1])
       end
     end
 
@@ -183,7 +187,7 @@ RSpec.describe Algorithms::BinaryTree do
       end
 
       it 'returns nodes from bottom to top' do
-        expect(postorder(root)).to eq([3, 2, 1])
+        expect(iteration.postorder(root)).to eq([3, 2, 1])
       end
     end
   end

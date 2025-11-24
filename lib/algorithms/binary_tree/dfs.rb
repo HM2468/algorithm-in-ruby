@@ -12,36 +12,33 @@ module Algorithms
 
     module RecursionDFS
       # 前序遍历：D -> L -> R
-      def preorder(root)
-        return [] if root.nil?
+      def preorder(root, &block)
+        raise ArgumentError, 'no block given' unless block
+        return if root.nil?
 
-        result = []
-        result << root.val                  # 1. 访问D
-        result.concat(preorder(root.left))  # 2. 遍历L子树
-        result.concat(preorder(root.right)) # 3. 遍历R子树
-        result
+        block.call(root.val)
+        preorder(root.left, &block)
+        preorder(root.right, &block)
       end
 
       # 中序遍历：L -> D -> R
-      def inorder(root)
-        return [] if root.nil?
+      def inorder(root, &block)
+        raise ArgumentError, 'no block given' unless block
+        return if root.nil?
 
-        result = []
-        result.concat(inorder(root.left))   # 1. 遍历L子树
-        result << root.val                  # 2. 访问D
-        result.concat(inorder(root.right))  # 3. 遍历R子树
-        result
+        inorder(root.left, &block)
+        block.call(root.val)
+        inorder(root.right, &block)
       end
 
       # 后序遍历：L -> R -> D
-      def postorder(root)
-        return [] if root.nil?
+      def postorder(root, &block)
+        raise ArgumentError, 'no block given' unless block
+        return if root.nil?
 
-        result = []
-        result.concat(postorder(root.left))  # 1. 遍历L子树
-        result.concat(postorder(root.right)) # 2. 遍历R子树
-        result << root.val                   # 3. 最后访问D
-        result
+        postorder(root.left, &block)
+        postorder(root.right, &block)
+        block.call(root.val)
       end
     end
 
