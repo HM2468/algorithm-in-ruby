@@ -32,6 +32,55 @@ module Algorithms
       a
     end
 
+    # Merge Sort
+    # usually done recursively
+    # divide and conquer
+    # @param arr [Array<Integer>]
+    # @return [Array<Integer>]
+    def merge_sort(arr)
+      # 0 个或 1 个元素的数组，天然有序，直接返回
+      return arr if arr.length <= 1
+
+      # 1. 把数组从中间劈成两半
+      mid = arr.length / 2
+      left  = arr[0...mid]
+      right = arr[mid...arr.length]
+
+      # 2. 递归地对左右两边分别做归并排序
+      sorted_left  = merge_sort(left)
+      sorted_right = merge_sort(right)
+
+      # 3. 合并两个有序数组
+      merge(sorted_left, sorted_right)
+    end
+
+    def merge(left, right)
+      result = []
+      i = 0 # left 的指针
+      j = 0 # right 的指针
+      # 两边都有剩余元素时，不停比较当前最小的那个
+      while i < left.length && j < right.length
+        if left[i] <= right[j]
+          result << left[i]
+          i += 1
+        else
+          result << right[j]
+          j += 1
+        end
+      end
+      # 把剩下没用完的元素全部接到后面
+      # (事实上下面两个只会执行一个，因为要么 left 用完，要么 right 用完)
+      while i < left.length
+        result << left[i]
+        i += 1
+      end
+      while j < right.length
+        result << right[j]
+        j += 1
+      end
+      result
+    end
+
 
   end
 end
