@@ -2,7 +2,7 @@
 require 'spec_helper'
 
 RSpec.describe Algorithms::LinkedStack do
-  include Algorithms::LinkedStack
+  include described_class
 
   describe '#daily_temperatures' do
     subject(:result) { daily_temperatures(input) }

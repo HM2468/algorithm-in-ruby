@@ -1,9 +1,9 @@
 # spec/algorithms/linked_stack/valid_parentheses_spec.rb
 require 'spec_helper'
 
-RSpec.describe 'Valid Parentheses' do
+RSpec.describe Algorithms::LinkedStack do
 
-  include Algorithms::LinkedStack
+  include described_class
 
   describe 'valid_parentheses?' do
     context 'when string is empty' do

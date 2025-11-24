@@ -2,7 +2,7 @@
 require "spec_helper"
 
 RSpec.describe Algorithms::BinaryTree do
-  include described_class::Recursion
+  include described_class::RecursionDFS
   let(:node) { described_class::Node }
 
   describe '#preorder' do

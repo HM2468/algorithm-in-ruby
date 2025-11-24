@@ -4,9 +4,10 @@ module Algorithms
     # 广度优先遍历 / 层序遍历
     # 返回一个按 BFS 顺序排列的节点值数组
     def bfs(root)
-      result = []
-      return result if root.nil?
+      return [] if root.nil?
+      raise ArgumentError, 'Not a BinaryTree::Node' unless root.is_a?(Node)
 
+      result = []
       q = LinkedQueue::Queue.new
       q.enqueue(root)
 

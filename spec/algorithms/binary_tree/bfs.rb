@@ -16,9 +16,7 @@ RSpec.describe Algorithms::BinaryTree do
     context 'when tree has only root node' do
       it 'returns an array with single value' do
         root = node.new(1, nil, nil)
-
         result = bfs(root)
-
         expect(result).to eq([1])
       end
     end
@@ -58,7 +56,6 @@ RSpec.describe Algorithms::BinaryTree do
         n3 = node.new(3, nil, nil)
         n2 = node.new(2, nil, n3)
         root = node.new(1, n2, nil)
-
         result = bfs(root)
 
         # BFS: 1 -> 2 -> 3
@@ -78,9 +75,7 @@ RSpec.describe Algorithms::BinaryTree do
         n3 = node.new(3, nil, nil)
         n2 = node.new(2, nil, n3)
         root = node.new(1, nil, n2)
-
         result = bfs(root)
-
         expect(result).to eq([1, 2, 3])
       end
     end
@@ -99,7 +94,6 @@ RSpec.describe Algorithms::BinaryTree do
         b = node.new('b', nil, d)
         c = node.new('c', e, nil)
         root = node.new('a', b, c)
-
         result = bfs(root)
 
         # Level 0: a
@@ -115,7 +109,6 @@ RSpec.describe Algorithms::BinaryTree do
         left  = node.new('left', nil, nil)
         right = node.new(obj, nil, nil)
         root  = node.new(42, left, right)
-
         result = bfs(root)
 
         expect(result).to eq([42, 'left', obj])

@@ -4,7 +4,7 @@ require 'spec_helper'
 RSpec.describe Algorithms::LinkedStack::Stack do
   subject(:stack) { described_class.new }
 
-  let(:node_class) { Algorithms::LinkedStack::Node }
+  let(:node) { Algorithms::LinkedStack::Node }
 
   describe 'initial state' do
     it 'can be instantiated without error' do
@@ -241,13 +241,13 @@ RSpec.describe Algorithms::LinkedStack::Stack do
 
   describe 'Node struct' do
     it 'is defined as Algorithms::LinkedStack::Node' do
-      expect(node_class).to be_a(Class)
-      expect(node_class.ancestors).to include(Struct)
+      expect(node).to be_a(Class)
+      expect(node.ancestors).to include(Struct)
     end
 
     it 'stores val and next correctly' do
-      node1 = node_class.new(1)
-      node2 = node_class.new(2, node1)
+      node1 = node.new(1)
+      node2 = node.new(2, node1)
 
       expect(node1.val).to eq(1)
       expect(node1.next).to be_nil
