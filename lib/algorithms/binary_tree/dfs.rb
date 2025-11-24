@@ -95,6 +95,8 @@ module Algorithms
         stack = LinkedStack::Stack.new
         stack.push(root)
 
+        # 技巧：用“变形前序遍历” + 反转
+        # 正常前序是 D L R，这里改成 D R L，最后 reverse 一下就是 L R D
         until stack.empty?
           node = stack.pop
           result << node.val
