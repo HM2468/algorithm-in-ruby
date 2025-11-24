@@ -29,6 +29,7 @@ module Algorithms
 
   module BinaryTree
     require_relative "algorithms/binary_tree/basic"
-    require_relative "algorithms/binary_tree/depth_first_traversal"
+    require_relative "algorithms/binary_tree/bfs"
+    require_relative "algorithms/binary_tree/dfs"
   end
 end
