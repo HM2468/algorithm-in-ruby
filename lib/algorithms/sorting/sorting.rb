@@ -81,6 +81,38 @@ module Algorithms
       result
     end
 
+    # 原地快速排序：直接在 arr 上排序
+    def quick_sort!(arr, first, last)
+      # 当区间内至少有 2 个元素时才需要排序
+      if first < last
+        # 1. 先对 [first, last] 这段做 partition
+        # partition 会把 pivot 放到正确位置，并返回 pivot 的下标 p
+        p = partition(arr, first, last)
+        # 2. 递归排序 pivot 左边和右边的两段
+        quick_sort!(arr, first, p - 1)
+        quick_sort!(arr, p + 1, last)
+      end
+      arr
+    end
+
+    # 分区函数：使用 Lomuto 分区方案
+    # 约定：pivot 就是 arr[last]（最后一个元素）
+    # 作用：
+    #   - 扫描 [first, last-1] 区间，把 <= pivot 的元素都移动到前面
+    #   - 最后把 pivot 放到中间的位置
+    #   - 返回 pivot 最终所在的下标
+    def partition(arr, first, last)
+      pivot = arr[last]
+      p_idx = first
+      (first...last).each do |j|
+        if arr[j] <= pivot
+          arr[p_idx], arr[j] = arr[j], arr[p_idx]
+          p_idx += 1
+        end
+      end
+      arr[p_idx], arr[last] = arr[last], arr[p_idx]
+      p_idx
+    end
 
   end
 end
