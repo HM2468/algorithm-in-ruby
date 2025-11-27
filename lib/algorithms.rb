@@ -32,4 +32,8 @@ module Algorithms
     require_relative "algorithms/binary_tree/bfs"
     require_relative "algorithms/binary_tree/dfs"
   end
+
+  module Sorting
+    require_relative "algorithms/sorting/sorting"
+  end
 end
