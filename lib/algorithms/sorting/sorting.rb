@@ -40,6 +40,29 @@ module Algorithms
       arr
     end
 
+    # 原地插入排序（从小到大）
+    # 外层循环控制“趟数”
+    # 第 1 趟把第二个元素“插入”到第一个元素的左边
+    # 第 2 趟把第三个元素“插入”到前两个元素的合适位置...
+    # 内层循环负责在已排序的元素中找合适位置
+    # @param arr [Array<Integer>]
+    # @return [Array<Integer>]
+    def insertion_sort!(arr)
+      # i 从 1 开始到数组最后一个索引
+      (1...arr.length).each do |i|
+        value = arr[i]
+        hole  = i
+        # 向前“挖坑”并后移元素
+        while hole > 0 && arr[hole - 1] > value
+          arr[hole] = arr[hole - 1]
+          hole -= 1
+        end
+        # 把当前元素插入到合适的位置
+        arr[hole] = value
+      end
+      arr
+    end
+
     # Merge Sort
     # usually done recursively
     # divide and conquer
