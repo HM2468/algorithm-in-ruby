@@ -22,11 +22,17 @@ module Algorithms
     end
 
     # 原地选择排序（从小到大）
+    # 外层循环控制“趟数”
+    # 第 1 趟把最小的元素“选择”到最前
+    # 第 2 趟把第二小的“选择”到第二个...
+    # 内层循环负责在未排序的元素中找最小的
+    # @param arr [Array<Integer>]
+    # @return [Array<Integer>]
     def selection_sort!(arr)
       n = arr.length
-      (0...n - 1).each do |i|
+      (0...(n-1)).each do |i|
         min_idx = i
-        (i + 1...n).each do |j|
+        ((i+1)...n).each do |j|
           min_idx = j if arr[j] < arr[min_idx]
         end
         arr[i], arr[min_idx] = arr[min_idx], arr[i] if min_idx != i
