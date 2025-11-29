@@ -27,8 +27,10 @@ module Algorithms
       end
 
       # 语义友好的封装：是否包含某个值
-      def include?(val)
-        !!search(val)
+      def include?(node=@root, val)
+        return false if node.nil?
+        return true if val == node.val
+        include?(val < node.val ? node.left : node.right, val)
       end
 
       # --------- 改：更新节点值 ---------
@@ -56,15 +58,11 @@ module Algorithms
       def insert_node(node, val)
         return Node.new(val) if node.nil?
 
-        if val < node.val
+        if val <= node.val
           node.left  = insert_node(node.left, val)
-        elsif val > node.val
-          node.right = insert_node(node.right, val)
         else
-          # val == node.val 的情况：
-          # 这里选择“忽略重复值”，也可以改成计数等
+          node.right = insert_node(node.right, val)
         end
-
         node
       end
 
