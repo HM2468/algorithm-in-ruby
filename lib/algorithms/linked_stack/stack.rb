@@ -13,10 +13,8 @@ module Algorithms
       end
 
       def pop
-        return nil if @top.nil?
-
-        val = @top.val
-        @top = @top.next
+        val = @top&.val
+        @top = @top&.next
         val
       end
 
@@ -25,8 +23,7 @@ module Algorithms
       end
 
       def peek
-        return nil if @top.nil?
-        @top.val
+        @top&.val
       end
     end
   end
