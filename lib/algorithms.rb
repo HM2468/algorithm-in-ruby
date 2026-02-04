@@ -36,4 +36,8 @@ module Algorithms
   module Sorting
     require_relative "algorithms/sorting/sorting"
   end
+
+  module DP
+    require_relative "algorithms/dp/climbing_stairs"
+  end
 end
