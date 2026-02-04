@@ -38,6 +38,7 @@ module Algorithms
   end
 
   module DP
-    require_relative "algorithms/dp/climbing_stairs"
+    require_relative "algorithms/dp/01_climbing_stairs"
+    require_relative "algorithms/dp/02_min_cost_climbing_stairs"
   end
 end
