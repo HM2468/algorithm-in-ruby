@@ -44,7 +44,7 @@ module DP
       @memo_cost[0] = cost[0]
       @memo_cost[1] = cost[1]
 
-      [min_cost_to_step(cost, n - 1), min_cost_to_step(cost, n - 2)].min
+      [dp(cost, n - 1), dp(cost, n - 2)].min
     end
 
     # Tabulation with DP array (O(n) space)
@@ -96,11 +96,10 @@ module DP
       end
     end
 
-    # helper for memoization: min cost to step on i
-    def min_cost_to_step(cost, i)
+    def dp(cost, i)
       return @memo_cost[i] unless @memo_cost[i].nil?
 
-      @memo_cost[i] = [min_cost_to_step(cost, i - 1), min_cost_to_step(cost, i - 2)].min + cost[i]
+      @memo_cost[i] = [dp(cost, i - 1), dp(cost, i - 2)].min + cost[i]
     end
   end
 end

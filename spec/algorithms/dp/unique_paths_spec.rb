@@ -70,6 +70,10 @@ RSpec.describe DP::UniquePaths do
       it_behaves_like "unique paths solver", :tabulation_unique_paths
     end
 
+    describe "#tabulation_unique_paths_1d" do
+      it_behaves_like "unique paths solver", :tabulation_unique_paths_1d
+    end
+
     context "when comparing all implementations" do
       it "returns the same result for m,n in 1..12" do
         (1..12).each do |m|
