@@ -41,5 +41,6 @@ module Algorithms
     require_relative "algorithms/dp/01_climbing_stairs"
     require_relative "algorithms/dp/02_min_cost_climbing_stairs"
     require_relative "algorithms/dp/03_house_robber"
+    require_relative "algorithms/dp/04_unique_paths"
   end
 end
