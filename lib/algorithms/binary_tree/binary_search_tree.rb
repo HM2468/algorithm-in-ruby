@@ -78,7 +78,6 @@ module Algorithms
           return [node, deleted]
         else
           # 找到了要删除的节点 node
-
           # 情况 1：只有右子树或没有子树
           if node.left.nil?
             return [node.right, true]
