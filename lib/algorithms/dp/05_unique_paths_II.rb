@@ -36,7 +36,7 @@ module DP
     #
     # Time:  O(m*n)
     # Space: O(m*n) memo + recursion stack O(m+n)
-    def memoization_unique_paths_with_obstacles(obstacle_grid)
+    def memoization(obstacle_grid)
       validate_grid!(obstacle_grid)
 
       m = obstacle_grid.size
@@ -56,7 +56,7 @@ module DP
     #
     # Time:  O(m*n)
     # Space: O(m*n)
-    def tabulation_unique_paths_with_obstacles(obstacle_grid)
+    def tabulation(obstacle_grid)
       validate_grid!(obstacle_grid)
 
       m = obstacle_grid.size
@@ -101,7 +101,7 @@ module DP
     #
     # Time:  O(m*n)
     # Space: O(n)
-    def tabulation_unique_paths_with_obstacles_1d(obstacle_grid)
+    def tabulation_1d(obstacle_grid)
       validate_grid!(obstacle_grid)
 
       m = obstacle_grid.size

@@ -1,6 +1,6 @@
 module DP
   class ClimbingStairs
-    def memoization_climb(n)
+    def memoization(n)
       validate_n!(n)
       return 1 if n == 1
       return 2 if n == 2
@@ -8,11 +8,11 @@ module DP
       @memo_ways ||= [nil, 1, 2]  # index: 1->1, 2->2
       return @memo_ways[n] unless @memo_ways[n].nil?
 
-      @memo_ways[n] = memoization_climb(n - 1) + memoization_climb(n - 2)
+      @memo_ways[n] = memoization(n - 1) + memoization(n - 2)
     end
 
     # Tabulation with DP array (O(n) space)
-    def tabulation_climb_1(n)
+    def tabulation_1(n)
       validate_n!(n)
       return 1 if n == 1
       return 2 if n == 2
@@ -28,7 +28,7 @@ module DP
     end
 
     # Tabulation with rolling variables (O(1) space)
-    def tabulation_climb_2(n)
+    def tabulation_2(n)
       validate_n!(n)
       return 1 if n == 1
       return 2 if n == 2

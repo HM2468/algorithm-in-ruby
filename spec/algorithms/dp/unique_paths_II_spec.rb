@@ -93,16 +93,16 @@ RSpec.describe DP::UniquePathsII do
       end
     end
 
-    describe "#memoization_unique_paths_with_obstacles" do
-      it_behaves_like "unique paths ii solver", :memoization_unique_paths_with_obstacles
+    describe "#memoization" do
+      it_behaves_like "unique paths ii solver", :memoization
     end
 
-    describe "#tabulation_unique_paths_with_obstacles" do
-      it_behaves_like "unique paths ii solver", :tabulation_unique_paths_with_obstacles
+    describe "#tabulation" do
+      it_behaves_like "unique paths ii solver", :tabulation
     end
 
-    describe "#tabulation_unique_paths_with_obstacles_1d" do
-      it_behaves_like "unique paths ii solver", :tabulation_unique_paths_with_obstacles_1d
+    describe "#tabulation_1d" do
+      it_behaves_like "unique paths ii solver", :tabulation_1d
     end
 
     context "when comparing all implementations" do
@@ -135,9 +135,9 @@ RSpec.describe DP::UniquePathsII do
         ]
 
         test_grids.each do |grid|
-          memo = solver.memoization_unique_paths_with_obstacles(grid)
-          tab2 = solver.tabulation_unique_paths_with_obstacles(grid)
-          tab1 = solver.tabulation_unique_paths_with_obstacles_1d(grid)
+          memo = solver.memoization(grid)
+          tab2 = solver.tabulation(grid)
+          tab1 = solver.tabulation_1d(grid)
 
           expect(memo).to eq(tab2)
           expect(tab2).to eq(tab1)

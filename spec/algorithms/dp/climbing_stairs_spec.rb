@@ -47,24 +47,24 @@ RSpec.describe DP::ClimbingStairs do
       end
     end
 
-    describe "#memoization_climb" do
-      it_behaves_like "climbing stairs solver", :memoization_climb
+    describe "#memoization" do
+      it_behaves_like "climbing stairs solver", :memoization
     end
 
-    describe "#tabulation_climb_1" do
-      it_behaves_like "climbing stairs solver", :tabulation_climb_1
+    describe "#tabulation_1" do
+      it_behaves_like "climbing stairs solver", :tabulation_1
     end
 
-    describe "#tabulation_climb_2" do
-      it_behaves_like "climbing stairs solver", :tabulation_climb_2
+    describe "#tabulation_2" do
+      it_behaves_like "climbing stairs solver", :tabulation_2
     end
 
     context "when comparing all implementations" do
       it "returns the same result for n = 1..15" do
         (1..15).each do |n|
-          memo = solver.memoization_climb(n)
-          tab1 = solver.tabulation_climb_1(n)
-          tab2 = solver.tabulation_climb_2(n)
+          memo = solver.memoization(n)
+          tab1 = solver.tabulation_1(n)
+          tab2 = solver.tabulation_2(n)
 
           expect(memo).to eq(tab1)
           expect(tab1).to eq(tab2)

@@ -44,7 +44,7 @@ module DP
     #
     # Time:  O(m*n)
     # Space: O(m*n) for memo + recursion stack O(m+n)
-    def memoization_unique_paths(m, n)
+    def memoization(m, n)
       validate_mn!(m, n)
       @memo = Array.new(m) { Array.new(n, 0) } # 0 means "not computed yet"
       memo_dp(m - 1, n - 1)
@@ -56,7 +56,7 @@ module DP
     #
     # Time:  O(m*n)
     # Space: O(m*n)
-    def tabulation_unique_paths(m, n)
+    def tabulation(m, n)
       validate_mn!(m, n)
 
       paths = Array.new(m) { Array.new(n, 0) }
@@ -94,7 +94,7 @@ module DP
     #
     # Time:  O(m*n)
     # Space: O(min(m,n))
-    def tabulation_unique_paths_1d(m, n)
+    def tabulation_1d(m, n)
       validate_mn!(m, n)
 
       width  = [m, n].min

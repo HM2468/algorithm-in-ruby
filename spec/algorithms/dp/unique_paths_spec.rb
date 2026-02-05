@@ -62,24 +62,24 @@ RSpec.describe DP::UniquePaths do
       end
     end
 
-    describe "#memoization_unique_paths" do
-      it_behaves_like "unique paths solver", :memoization_unique_paths
+    describe "#memoization" do
+      it_behaves_like "unique paths solver", :memoization
     end
 
-    describe "#tabulation_unique_paths" do
-      it_behaves_like "unique paths solver", :tabulation_unique_paths
+    describe "#tabulation" do
+      it_behaves_like "unique paths solver", :tabulation
     end
 
-    describe "#tabulation_unique_paths_1d" do
-      it_behaves_like "unique paths solver", :tabulation_unique_paths_1d
+    describe "#tabulation_1d" do
+      it_behaves_like "unique paths solver", :tabulation_1d
     end
 
     context "when comparing all implementations" do
       it "returns the same result for m,n in 1..12" do
         (1..12).each do |m|
           (1..12).each do |n|
-            memo = solver.memoization_unique_paths(m, n)
-            tab  = solver.tabulation_unique_paths(m, n)
+            memo = solver.memoization(m, n)
+            tab  = solver.tabulation(m, n)
 
             expect(memo).to eq(tab)
           end
