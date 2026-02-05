@@ -43,5 +43,6 @@ module Algorithms
     require_relative "algorithms/dp/03_house_robber"
     require_relative "algorithms/dp/04_unique_paths"
     require_relative "algorithms/dp/05_unique_paths_II"
+    require_relative "algorithms/dp/06_longest_common_subsequence"
   end
 end
