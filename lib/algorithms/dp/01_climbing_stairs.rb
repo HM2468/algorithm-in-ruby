@@ -1,3 +1,51 @@
+# frozen_string_literal: true
+
+=begin
+70. Climbing Stairs
+
+You are climbing a staircase. It takes n steps to reach the top.
+Each time you can either climb 1 or 2 steps.
+Return the number of distinct ways to reach the top.
+
+Conventions (point-based DP / index-based DP):
+  - n: total number of steps (1-based)
+  - ways(n): number of distinct ways to reach step n
+
+State meaning:
+  ways(n) = total number of ways to reach the n-th step
+
+Base cases:
+  ways(1) = 1   # only one way: 1
+  ways(2) = 2   # two ways: 1+1, 2
+
+Transition:
+  To reach step n, the last move must be:
+    - from step n-1 with a 1-step move
+    - from step n-2 with a 2-step move
+
+  Therefore:
+    ways(n) = ways(n-1) + ways(n-2)
+
+This is a classic 1D dynamic programming problem and is
+mathematically equivalent to the Fibonacci sequence (with shifted indices).
+
+We provide multiple implementations:
+  1) memoization    : top-down recursion with caching
+  2) tabulation_1   : bottom-up DP array (O(n) space)
+  3) tabulation_2   : bottom-up with rolling variables (O(1) space)
+
+Time Complexity:
+  - All implementations: O(n)
+
+Space Complexity:
+  - memoization    : O(n) recursion + O(n) cache
+  - tabulation_1   : O(n)
+  - tabulation_2   : O(1)
+
+@param n [Integer]
+@return [Integer]
+=end
+
 module DP
   class ClimbingStairs
     def memoization(n)

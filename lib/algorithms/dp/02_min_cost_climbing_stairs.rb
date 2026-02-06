@@ -1,32 +1,57 @@
+# frozen_string_literal: true
+
 =begin
 746. Min Cost Climbing Stairs
-You are given an integer array cost where cost[i] is the cost of ith step on a staircase. Once you pay the cost, you can either climb one or two steps.
-You can either start from the step with index 0, or the step with index 1.
-Return the minimum cost to reach the top of the floor.
 
-Example 1:
-Input: cost = [10,15,20]
-Output: 15
-Explanation: You will start at index 1.
-- Pay 15 and climb two steps to reach the top.
-The total cost is 15.
+You are given an integer array cost where cost[i] is the cost of the i-th step.
+Once you pay the cost, you can either climb one or two steps.
+You can start from step 0 or step 1.
+Return the minimum cost to reach the top of the floor (beyond the last step).
 
-Example 2:
-Input: cost = [1,100,1,1,1,100,1,1,100,1]
-Output: 6
-Explanation: You will start at index 0.
-- Pay 1 and climb two steps to reach index 2.
-- Pay 1 and climb two steps to reach index 4.
-- Pay 1 and climb two steps to reach index 6.
-- Pay 1 and climb one step to reach index 7.
-- Pay 1 and climb two steps to reach index 9.
-- Pay 1 and climb one step to reach the top.
-The total cost is 6.
+Conventions (point-based / index-based DP):
+  - n = cost.length
+  - cost[i]: cost of stepping on stair i (0-based)
+  - The "top" is conceptually at index n (beyond the last stair)
+  - You do NOT pay cost[n]; only costs of actual stairs are counted
 
-Constraints:
+State meaning:
+  dp[i] = minimum cost required to reach step i
 
-2 <= cost.length <= 1000
-0 <= cost[i] <= 999
+Interpretation:
+  Reaching step i means you have already paid cost[i].
+  The final answer is min(dp[n-1], dp[n-2]), because from either of them
+  you can climb to the top without extra cost.
+
+Base cases:
+  dp[0] = cost[0]
+  dp[1] = cost[1]
+
+Transition:
+  To reach step i, you must come from:
+    - step i-1 (1 step jump)
+    - step i-2 (2 steps jump)
+
+  Therefore:
+    dp[i] = min(dp[i-1], dp[i-2]) + cost[i]
+
+Final answer:
+  min(dp[n-1], dp[n-2])
+
+We provide multiple implementations:
+  1) memoization          : top-down recursion with caching
+  2) tabulation_min_cost_1: bottom-up DP array (O(n) space)
+  3) tabulation_min_cost_2: bottom-up with rolling variables (O(1) space)
+
+Time Complexity:
+  - All implementations: O(n)
+
+Space Complexity:
+  - memoization          : O(n) recursion + O(n) cache
+  - tabulation_min_cost_1: O(n)
+  - tabulation_min_cost_2: O(1)
+
+@param cost [Array<Numeric>]
+@return [Numeric]
 =end
 
 module DP

@@ -1,28 +1,53 @@
+# frozen_string_literal: true
+
 =begin
 198. House Robber
-You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security systems connected and it will automatically contact the police if two adjacent houses were broken into on the same night.
-Given an integer array nums representing the amount of money of each house, return the maximum amount of money you can rob tonight without alerting the police.
 
-Example 1:
-Input: nums = [1,2,3,1]
-Output: 4
-Explanation: Rob house 1 (money = 1) and then rob house 3 (money = 3).
-Total amount you can rob = 1 + 3 = 4.
+You are a professional robber planning to rob houses along a street.
+Each house has a certain amount of money stashed.
+The only constraint is that you cannot rob two adjacent houses
+(otherwise the alarm will be triggered).
 
-Example 2:
-Input: nums = [2,7,9,3,1]
-Output: 12
-Explanation: Rob house 1 (money = 2), rob house 3 (money = 9) and rob house 5 (money = 1).
-Total amount you can rob = 2 + 9 + 1 = 12.
+Given an integer array nums where nums[i] is the amount of money in the i-th house,
+return the maximum amount of money you can rob without alerting the police.
 
-核心建模思路:
-  走到第 i 个房子时，你只有两种选择：
-	1. 不抢第 i 家
-    那最优结果就是前 i-1 家的最优：dp[i-1]
-	2. 抢第 i 家
-    那第 i-1 家必须不抢，所以收益是：dp[i-2] + nums[i]
-  因此最优是两者取 max：
+Conventions (point-based / index-based DP):
+  - n = nums.length
+  - nums[i]: money in house i (0-based)
+  - Houses are arranged linearly
+
+State meaning:
+  dp[i] = maximum money that can be robbed from houses [0..i]
+
+Base cases:
+  dp[0] = nums[0]
+  dp[1] = max(nums[0], nums[1])
+
+Transition:
+  At house i, you have two choices:
+    1) Do not rob house i
+       => total = dp[i-1]
+    2) Rob house i
+       => you must skip house i-1
+       => total = dp[i-2] + nums[i]
+
+  Therefore:
     dp[i] = max(dp[i-1], dp[i-2] + nums[i])
+
+Final answer:
+  dp[n-1]
+
+We implement the optimized tabulation version using rolling variables
+to achieve O(1) space complexity.
+
+Time Complexity:
+  - O(n)
+
+Space Complexity:
+  - O(1)
+
+@param nums [Array<Integer>]
+@return [Integer]
 =end
 
 module DP

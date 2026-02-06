@@ -3,29 +3,59 @@
 =begin
 62. Unique Paths
 
-Conventions (strictly 0-based):
-  - m: number of rows    (height)
-  - n: number of columns (width)
+A robot is located at the top-left corner of an m x n grid.
+The robot can only move either DOWN or RIGHT at any point in time.
+The robot is trying to reach the bottom-right corner of the grid.
 
-Grid indexing:
-  grid[row][col], where:
-    row in 0..(m-1)
-    col in 0..(n-1)
+Return the number of unique paths the robot can take.
 
-@param m [Integer] rows
-@param n [Integer] cols
-@return [Integer]
+Conventions (point-based / 2D index-based DP):
+  - m: number of rows
+  - n: number of columns
+  - Grid indices are 0-based:
+      row in 0..(m-1)
+      col in 0..(n-1)
+  - Start:  (0, 0)
+  - Finish: (m-1, n-1)
 
-Start:  (0, 0)
-Finish: (m-1, n-1)
-Moves:  DOWN => (row + 1, col), RIGHT => (row, col + 1)
+State meaning:
+  dp[r][c] = number of unique paths to reach cell (r, c) from start (0, 0)
 
-Goal:
-  Return the number of unique paths from (0,0) to (m-1,n-1).
+Base cases:
+  dp[0][c] = 1   # first row: only RIGHT moves
+  dp[r][0] = 1   # first column: only DOWN moves
 
-DP model (classic):
-  paths[r][c] = paths[r-1][c] + paths[r][c-1]
-  with base row/col = 1
+Transition:
+  To reach cell (r, c), the robot must come from:
+    - cell (r-1, c) by moving DOWN
+    - cell (r, c-1) by moving RIGHT
+
+  Therefore:
+    dp[r][c] = dp[r-1][c] + dp[r][c-1]
+
+Final answer:
+  dp[m-1][n-1]
+
+This is a classic 2D dynamic programming problem that counts
+the number of ways to reach a target under movement constraints.
+
+We provide multiple implementations:
+  1) memoization : top-down recursion with caching
+  2) tabulation  : bottom-up full 2D DP table (O(m*n) space)
+  3) tabulation_1d : bottom-up optimized with rolling array
+                     using O(min(m,n)) space
+
+Time Complexity:
+  - All implementations: O(m * n)
+
+Space Complexity:
+  - memoization : O(m * n) memo + recursion stack O(m + n)
+  - tabulation  : O(m * n)
+  - tabulation_1d : O(min(m, n))
+
+@param m [Integer] number of rows
+@param n [Integer] number of columns
+@return [Integer] number of unique paths
 =end
 
 module DP

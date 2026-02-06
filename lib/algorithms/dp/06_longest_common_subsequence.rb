@@ -4,34 +4,63 @@
 1143. Longest Common Subsequence (LCS)
 
 Given two strings text1 and text2, return the length of their longest common subsequence.
+A subsequence is a sequence that can be derived from the string by deleting some (or none)
+characters without changing the relative order of the remaining characters.
 
-Conventions (align with the classic "extra empty row/col" DP table):
+Conventions (prefix-based / 2D index-based DP with extra empty row/col):
   - m = text1.length
   - n = text2.length
   - dp is sized (m+1) x (n+1)
-  - dp[0][j] = 0 for all j (empty prefix of text1)
-  - dp[i][0] = 0 for all i (empty prefix of text2)
+  - dp[i][j] represents the LCS length of:
+      text1[0...i]  (first i characters)
+      text2[0...j]  (first j characters)
+  - dp[0][j] = 0  (empty prefix of text1)
+  - dp[i][0] = 0  (empty prefix of text2)
 
 State meaning:
-  dp[i][j] = LCS length of:
-    text1[0...(i)]  (first i chars)
-    text2[0...(j)]  (first j chars)
+  dp[i][j] = the length of the longest common subsequence
+             between prefixes text1[0...i] and text2[0...j]
+
+Base cases:
+  dp[0][j] = 0 for all j   # one string is empty
+  dp[i][0] = 0 for all i   # one string is empty
 
 Transition:
-  if text1[i-1] == text2[j-1]
+  Consider the last characters of the two prefixes:
+    - text1[i-1]
+    - text2[j-1]
+
+  If they are equal:
     dp[i][j] = dp[i-1][j-1] + 1
-  else
+    (the character can be part of the common subsequence)
+
+  Otherwise:
     dp[i][j] = max(dp[i-1][j], dp[i][j-1])
+    (skip one character from either string)
+
+Final answer:
+  dp[m][n]
+
+This is a classic prefix DP problem and a canonical example of
+dynamic programming on sequences.
 
 We provide multiple implementations:
-  1) tabulation        : full 2D dp (m+1) x (n+1)
-  2) tabulation_1d     : 1D optimized with the same empty row/col semantics (O(min(m,n)))
-  3) memoization       : top-down recursion over (i,j) where i/j are lengths (0..m, 0..n),
-                         with base dp(0,*)=0 and dp(*,0)=0 (same semantics)
+  1) memoization  : top-down recursion with caching (length-based semantics)
+  2) tabulation   : bottom-up full 2D DP table (O(m*n) space)
+  3) tabulation_1d: bottom-up optimized with rolling 1D array
+                    using O(min(m,n)) space
+
+Time Complexity:
+  - All implementations: O(m * n)
+
+Space Complexity:
+  - memoization  : O(m * n) memo + recursion stack O(m + n)
+  - tabulation   : O(m * n)
+  - tabulation_1d: O(min(m, n))
 
 @param text1 [String]
 @param text2 [String]
-@return [Integer]
+@return [Integer] length of the longest common subsequence
 =end
 
 module DP

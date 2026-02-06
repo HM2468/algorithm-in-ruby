@@ -1,31 +1,71 @@
 # frozen_string_literal: true
 
+# frozen_string_literal: true
+
 =begin
 63. Unique Paths II
 
 You are given an m x n grid with obstacles.
-A robot starts at top-left (0,0) and wants to reach bottom-right (m-1,n-1).
+A robot starts at the top-left corner (0,0) and wants to reach the bottom-right corner (m-1,n-1).
 The robot can only move DOWN or RIGHT.
-An obstacle is marked as 1; free cell is 0.
+An obstacle is marked as 1; a free cell is 0.
 Return the number of unique paths.
 
-Conventions (strictly 0-based):
+Conventions (point-based / 2D index-based DP with obstacles):
   - m: number of rows
   - n: number of columns
-  - grid[row][col]
+  - Grid indices are 0-based:
+      row in 0..(m-1)
+      col in 0..(n-1)
+  - obstacle_grid[r][c] == 1 means the cell is blocked (cannot step on it)
   - Start:  (0, 0)
   - Finish: (m-1, n-1)
 
-@param obstacle_grid [Array<Array<Integer>>]
-@return [Integer]
+State meaning:
+  dp[r][c] = number of unique paths to reach cell (r, c) from start (0, 0)
+            while never stepping onto an obstacle
 
-DP model (classic with obstacles):
-  If obstacle_grid[r][c] == 1 => paths[r][c] = 0
-  Else paths[r][c] = paths[r-1][c] + paths[r][c-1]
+Obstacle rule:
+  If obstacle_grid[r][c] == 1, then dp[r][c] = 0 (no ways to stand on a blocked cell)
 
-Base:
-  If start is obstacle => 0
-  First row/col must stop propagating 1s once an obstacle is hit.
+Base cases:
+  - If start is blocked: answer is 0
+  - dp[0][0] = 1 if start is free
+
+  For the first row (r = 0):
+    dp[0][c] is either:
+      - 0 if obstacle at (0,c), OR
+      - dp[0][c-1] otherwise
+    (Because the robot can only come from the left on the first row.)
+
+  For the first column (c = 0):
+    dp[r][0] is either:
+      - 0 if obstacle at (r,0), OR
+      - dp[r-1][0] otherwise
+    (Because the robot can only come from above on the first column.)
+
+Transition:
+  For any free cell (r, c) where r > 0 and c > 0:
+    dp[r][c] = dp[r-1][c] + dp[r][c-1]
+
+Final answer:
+  dp[m-1][n-1]
+
+We provide multiple implementations:
+  1) memoization  : top-down recursion with caching (O(m*n) memo)
+  2) tabulation   : bottom-up full 2D DP table (O(m*n) space)
+  3) tabulation_1d: bottom-up optimized with a rolling 1D array (O(n) space)
+
+Time Complexity:
+  - All implementations: O(m * n)
+
+Space Complexity:
+  - memoization  : O(m * n) memo + recursion stack O(m + n)
+  - tabulation   : O(m * n)
+  - tabulation_1d: O(n)
+
+@param obstacle_grid [Array<Array<Integer>>] values must be 0 or 1
+@return [Integer] number of unique paths
 =end
 
 module DP
