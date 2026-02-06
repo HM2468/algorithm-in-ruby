@@ -8,19 +8,28 @@ Given a string s, return the length of the longest palindromic subsequence.
 A subsequence is derived by deleting some (or none) characters
 without changing the relative order of the remaining characters.
 
-Conventions (interval DP with extra empty interval semantics):
+Conventions (interval DP, inclusive indices):
   - n = s.length
-  - dp is sized (n+1) x (n+1)
+  - dp is sized n x n
   - dp[i][j] represents the LPS length of substring:
-      s[i...j]   (i inclusive, j exclusive)
-  - dp[i][i] = 0        (empty interval)
-  - dp[i][i+1] = 1      (single character)
+      s[i..j]   (i and j are both inclusive)
+  - i <= j
+
+State meaning:
+  dp[i][j] = length of the longest palindromic subsequence in s[i..j]
+
+Base cases:
+  - dp[i][i] = 1          (single character)
+  - i > j    => 0         (empty interval, used implicitly)
 
 Transition:
-  if s[i] == s[j-1]:
+  If s[i] == s[j]:
     dp[i][j] = dp[i+1][j-1] + 2
-  else:
+  Else:
     dp[i][j] = max(dp[i+1][j], dp[i][j-1])
+
+Final answer:
+  dp[0][n-1]
 
 @param s [String]
 @return [Integer]
@@ -28,13 +37,13 @@ Transition:
 
 module DP
   class LongestPalindromicSubsequence
-    # Memoization (top-down, interval DP)
+    # Memoization (top-down, interval DP, inclusive indices)
     #
-    # dp(i, j): LPS length of s[i...j]
+    # dp(i, j): LPS length of s[i..j]
     #
     # Base:
-    #   dp(i, i)   = 0
-    #   dp(i, i+1) = 1
+    #   i > j  => 0
+    #   i == j => 1
     #
     # Time:  O(n^2)
     # Space: O(n^2) memo + recursion stack
@@ -42,33 +51,42 @@ module DP
       validate_string!(s)
 
       @s = s
-      @n = s.length
-      @memo = Array.new(@n + 1) { Array.new(@n + 1, nil) }
+      n = s.length
+      return 0 if n == 0
 
-      dp(0, @n)
+      @memo = Array.new(n) { Array.new(n, nil) }
+      dp(0, n - 1)
     end
 
     # Tabulation (bottom-up) - full 2D table
+    # Fill order:
+    #       j →
+    #       0   1   2   3   4
+    #
+    # i=0   1   2   3   4   5
+    # i=1       1   2   3   4
+    # i=2           1   2   3
+    # i=3               1   2
+    # i=4                   1
     #
     # Time:  O(n^2)
     # Space: O(n^2)
     def tabulation(s)
       validate_string!(s)
-
       n = s.length
-      dp = Array.new(n + 1) { Array.new(n + 1, 0) }
+      return 0 if n == 0
 
-      # dp[i][i] = 0 (empty interval)
-      # dp[i][i+1] = 1 (single char)
+      dp = Array.new(n) { Array.new(n, 0) }
+      # Base: single character
       (0...n).each do |i|
-        dp[i][i + 1] = 1
+        dp[i][i] = 1
       end
 
-      # Fill by increasing interval length
+      # Interval length from 2 to n
       (2..n).each do |len|
         (0..n - len).each do |i|
-          j = i + len
-          if s[i] == s[j - 1]
+          j = i + len - 1
+          if s[i] == s[j]
             dp[i][j] = dp[i + 1][j - 1] + 2
           else
             dp[i][j] = [dp[i + 1][j], dp[i][j - 1]].max
@@ -76,14 +94,18 @@ module DP
         end
       end
 
-      dp[0][n]
+      dp[0][n - 1]
     end
 
     # Tabulation (bottom-up) - 1D optimized
     #
     # dp[j] represents dp[i][j] for current i
     #
-    # We iterate i from n-1 down to 0
+    # Iteration order:
+    #   i from n-1 downto 0
+    #   j from i+1 upto n-1
+    #
+    # prev_diag holds old dp[i+1][j-1]
     #
     # Time:  O(n^2)
     # Space: O(n)
@@ -93,14 +115,15 @@ module DP
       n = s.length
       return 0 if n == 0
 
-      dp = Array.new(n + 1, 0)
+      dp = Array.new(n, 0)
 
       (n - 1).downto(0) do |i|
-        prev_diag = 0
-        dp[i + 1] = 1
-        (i + 2..n).each do |j|
+        dp[i] = 1            # dp[i][i] = 1
+        prev_diag = 0        # represents dp[i+1][j-1]
+
+        (i + 1...n).each do |j|
           temp = dp[j]
-          if s[i] == s[j - 1]
+          if s[i] == s[j]
             dp[j] = prev_diag + 2
           else
             dp[j] = [dp[j], dp[j - 1]].max
@@ -109,20 +132,20 @@ module DP
         end
       end
 
-      dp[n]
+      dp[n - 1]
     end
 
     private
 
-    # dp(i, j): LPS length of s[i...j]
+    # dp(i, j): LPS length of s[i..j]
     def dp(i, j)
-      return 0 if i >= j
-      return 1 if j == i + 1
+      return 0 if i > j
+      return 1 if i == j
 
       cached = @memo[i][j]
       return cached unless cached.nil?
 
-      if @s[i] == @s[j - 1]
+      if @s[i] == @s[j]
         @memo[i][j] = dp(i + 1, j - 1) + 2
       else
         @memo[i][j] = [dp(i + 1, j), dp(i, j - 1)].max
