@@ -1,8 +1,8 @@
-# spec/algorithms/linked-lists/detect_cycle_spec.rb
+# spec/data_structure/linked-lists/detect_cycle_spec.rb
 require "spec_helper"
 
 RSpec.describe "detect_cycle" do
-  include Algorithms::LinkedLists
+  include DataStructure::LinkedLists
 
   describe "#detect_cycle" do
     context "when the list is empty" do

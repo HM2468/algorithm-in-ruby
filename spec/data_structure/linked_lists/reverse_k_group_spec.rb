@@ -1,9 +1,9 @@
-# spec/algorithms/linked_lists/reverse_k_group_spec.rb
+# spec/data_structure/linked_lists/reverse_k_group_spec.rb
 
 require "spec_helper"
 
 RSpec.describe 'reverse_k_group' do
-  include Algorithms::LinkedLists
+  include DataStructure::LinkedLists
 
   describe '#reverse_k_group' do
     it 'returns nil when head is nil' do

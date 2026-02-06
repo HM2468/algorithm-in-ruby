@@ -1,6 +1,6 @@
-# spec/algorithms/linked_stack/mini_stack_spec.rb
+# spec/data_structure/linked_stack/mini_stack_spec.rb
 require 'spec_helper'
-RSpec.describe Algorithms::LinkedStack::MinStack do
+RSpec.describe DataStructure::LinkedStack::MinStack do
   subject(:min_stack) { described_class.new }
 
   describe 'initial state' do

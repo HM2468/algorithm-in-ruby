@@ -1,8 +1,8 @@
-# spec/algorithms/linked-lists/merge_two_sorted_lists_spec.rb
+# spec/data_structure/linked-lists/merge_two_sorted_lists_spec.rb
 require "spec_helper"
 
 RSpec.describe "merge_two_sorted_lists" do
-  include Algorithms::LinkedLists
+  include DataStructure::LinkedLists
 
   describe "#merge_two_sorted_lists" do
     context "when both lists are empty" do

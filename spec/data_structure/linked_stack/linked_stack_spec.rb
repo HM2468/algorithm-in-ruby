@@ -1,10 +1,10 @@
-# spec/algorithms/linked_stack_spec.rb
+# spec/data_structure/linked_stack_spec.rb
 require 'spec_helper'
 
-RSpec.describe Algorithms::LinkedStack::Stack do
+RSpec.describe DataStructure::LinkedStack::Stack do
   subject(:stack) { described_class.new }
 
-  let(:node) { Algorithms::LinkedStack::Node }
+  let(:node) { DataStructure::LinkedStack::Node }
 
   describe 'initial state' do
     it 'can be instantiated without error' do
@@ -240,7 +240,7 @@ RSpec.describe Algorithms::LinkedStack::Stack do
   end
 
   describe 'Node struct' do
-    it 'is defined as Algorithms::LinkedStack::Node' do
+    it 'is defined as DataStructure::LinkedStack::Node' do
       expect(node).to be_a(Class)
       expect(node.ancestors).to include(Struct)
     end

@@ -1,8 +1,8 @@
-# spec/algorithms/linked_lists/reverse_linked_list_spec.rb
+# spec/data_structure/linked_lists/reverse_linked_list_spec.rb
 require "spec_helper"
 
 RSpec.describe 'reverse_linked_list' do
-  include Algorithms::LinkedLists
+  include DataStructure::LinkedLists
 
   describe '#reverse_linked_list' do
     context 'when the head is nil (empty list)' do

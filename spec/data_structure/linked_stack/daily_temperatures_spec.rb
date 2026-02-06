@@ -1,7 +1,7 @@
-# spec/algorithms/linked_stack/daily_temperatures_spec.rb
+# spec/data_structure/linked_stack/daily_temperatures_spec.rb
 require 'spec_helper'
 
-RSpec.describe Algorithms::LinkedStack do
+RSpec.describe DataStructure::LinkedStack do
   include described_class
 
   describe '#daily_temperatures' do

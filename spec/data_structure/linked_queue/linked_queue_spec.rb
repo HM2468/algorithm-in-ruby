@@ -1,7 +1,7 @@
-# spec/algorithms/linked_queue_spec.rb
+# spec/data_structure/linked_queue_spec.rb
 require 'spec_helper'
 
-RSpec.describe Algorithms::LinkedQueue::Queue do
+RSpec.describe DataStructure::LinkedQueue::Queue do
   let(:queue) { described_class.new }
 
   describe 'initial state' do

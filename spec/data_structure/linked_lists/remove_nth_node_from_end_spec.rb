@@ -1,8 +1,8 @@
-# spec/algorithms/linked-lists/remove_nth_from_end_spec.rb
+# spec/data_structure/linked-lists/remove_nth_from_end_spec.rb
 require "spec_helper"
 
 RSpec.describe "remove_nth_from_end" do
-  include Algorithms::LinkedLists
+  include DataStructure::LinkedLists
 
   describe "#remove_nth_node_from_end" do
     context "when the list has multiple nodes" do

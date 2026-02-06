@@ -1,8 +1,8 @@
-# spec/algorithms/binary_tree/bfs_spec.rb
+# spec/data_structure/binary_tree/bfs_spec.rb
 
 require "spec_helper"
 
-RSpec.describe Algorithms::BinaryTree do
+RSpec.describe DataStructure::BinaryTree do
   include described_class
   let(:node) { described_class::Node }
 

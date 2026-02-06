@@ -1,8 +1,8 @@
-# spec/algorithms/linked_lists/palindrome_spec.rb
+# spec/data_structure/linked_lists/palindrome_spec.rb
 require "spec_helper"
 
 RSpec.describe '#palindrome?' do
-  include Algorithms::LinkedLists
+  include DataStructure::LinkedLists
 
   describe '#palindrome?' do
     it 'returns true for empty list' do

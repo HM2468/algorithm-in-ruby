@@ -1,18 +1,18 @@
-# spec/algorithms/binary_tree/dfs_spec.rb
+# spec/data_structure/binary_tree/dfs_spec.rb
 require "spec_helper"
 
-RSpec.describe Algorithms::BinaryTree do
+RSpec.describe DataStructure::BinaryTree do
   let(:node) { described_class::Node }
 
   let(:iteration) do
     Class.new do
-      include Algorithms::BinaryTree::IterationDFS
+      include DataStructure::BinaryTree::IterationDFS
     end.new
   end
 
   let(:recursion) do
     Class.new do
-      include Algorithms::BinaryTree::RecursionDFS
+      include DataStructure::BinaryTree::RecursionDFS
     end.new
   end
 
