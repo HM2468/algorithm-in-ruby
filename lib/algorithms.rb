@@ -46,7 +46,8 @@ module Algorithms
     require_relative "algorithms/dp/06_longest_common_subsequence"
     require_relative "algorithms/dp/07_longest_palindromic_subsequence"
     require_relative "algorithms/dp/08_palindromic_substrings"
-    require_relative "algorithms/dp/09_longest_increasing_subsequence"
-    require_relative "algorithms/dp/10_partition_equal_subset_sum"
+    require_relative "algorithms/dp/09_palindromic_substrings"
+    require_relative "algorithms/dp/10_longest_increasing_subsequence"
+    require_relative "algorithms/dp/11_partition_array_for_maximum_sum"
   end
 end
