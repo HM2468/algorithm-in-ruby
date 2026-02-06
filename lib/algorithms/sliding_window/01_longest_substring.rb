@@ -14,7 +14,7 @@ Conventions (sliding window / two pointers):
       all characters inside s[l..r] are unique
 
 State / invariant:
-  - window is valid iff no duplicated characters inside
+  - window is valid if no duplicated characters inside
   - last_pos[ch] stores the most recent index of character ch
 
 Algorithm idea:
@@ -42,45 +42,35 @@ module SlidingWindow
   class LongestSubstring
     # Sliding Window / Two Pointers
     #
-    # l: left boundary of window (inclusive)
-    # r: right boundary of window (inclusive)
+    # left: left boundary of window (inclusive)
+    # right: right boundary of window (inclusive)
     #
     # last_pos[ch]: last index where character ch appeared
     #
     # Invariant:
-    #   s[l..r] contains no duplicate characters
+    #   s[left..right] contains no duplicate characters
     #
     # Time:  O(n)
     # Space: O(min(n, charset))
     def length_of_longest_substring(s)
-      validate_string!(s)
+      raise ArgumentError, "s must be a String" unless s.is_a?(String)
+      return 0 if s.empty?
 
       n = s.length
-      return 0 if n == 0
-
       last_pos = {}
-      l = 0
+      left = 0
       best = 0
 
-      (0...n).each do |r|
-        ch = s[r]
-
+      (0...n).each do |right|
+        ch = s[right]
         # If ch already exists in current window, move left pointer
-        if last_pos.key?(ch) && last_pos[ch] >= l
-          l = last_pos[ch] + 1
+        if last_pos.key?(ch) && last_pos[ch] >= left
+          left = last_pos[ch] + 1
         end
-
-        last_pos[ch] = r
-        best = [best, r - l + 1].max
+        last_pos[ch] = right
+        best = [best, right - left + 1].max
       end
-
       best
-    end
-
-    private
-
-    def validate_string!(s)
-      raise ArgumentError, "s must be a String" unless s.is_a?(String)
     end
   end
 end
