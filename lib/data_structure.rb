@@ -1,15 +1,15 @@
 module DataStructure
 
   module LinkedLists
-    require_relative "data_structure/linked_lists/basic"
-    require_relative "data_structure/linked_lists/detect_cycle"
-    require_relative "data_structure/linked_lists/has_cycle"
-    require_relative "data_structure/linked_lists/merge_two_sorted_list"
-    require_relative "data_structure/linked_lists/palindrome"
-    require_relative "data_structure/linked_lists/reverse_linked_list"
-    require_relative "data_structure/linked_lists/reverse_k_group"
-    require_relative "data_structure/linked_lists/recursive_print"
-    require_relative "data_structure/linked_lists/remove_nth_node_from_end"
+    require_relative "data_structure/linked_lists/00_basic"
+    require_relative "data_structure/linked_lists/01_detect_cycle"
+    require_relative "data_structure/linked_lists/02_has_cycle"
+    require_relative "data_structure/linked_lists/03_reverse_linked_list"
+    require_relative "data_structure/linked_lists/04_remove_nth_node_from_end"
+    require_relative "data_structure/linked_lists/05_reverse_k_group"
+    require_relative "data_structure/linked_lists/06_merge_two_sorted_list"
+    require_relative "data_structure/linked_lists/07_recursive_print"
+    require_relative "data_structure/linked_lists/08_palindrome"
   end
 
   module LinkedQueue
