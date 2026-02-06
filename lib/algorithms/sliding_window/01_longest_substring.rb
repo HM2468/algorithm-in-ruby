@@ -48,8 +48,8 @@
     • 如果 last_index[ch] < left，说明之前出现过，但已经不在当前窗口中，无需理会
 =end
 
-module Algorithms
-  module Strings
+module SlidingWindow
+  class LongestSubstring
     # @param s [String]
     # @return [Integer]
     def length_of_longest_substring(s)

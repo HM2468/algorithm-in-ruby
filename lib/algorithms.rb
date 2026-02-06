@@ -1,8 +1,4 @@
 module Algorithms
-  module Strings
-    require_relative "algorithms/strings/longest_palindrome"
-    require_relative "algorithms/strings/longest_substring"
-  end
 
   module LinkedLists
     require_relative "algorithms/linked_lists/basic"
@@ -35,6 +31,10 @@ module Algorithms
 
   module Sorting
     require_relative "algorithms/sorting/sorting"
+  end
+
+  module SlidingWindow
+    require_relative "algorithms/sliding_window/01_longest_substring"
   end
 
   module DP
