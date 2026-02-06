@@ -45,5 +45,6 @@ module Algorithms
     require_relative "algorithms/dp/05_unique_paths_II"
     require_relative "algorithms/dp/06_longest_common_subsequence"
     require_relative "algorithms/dp/07_longest_palindromic_subsequence"
+    require_relative "algorithms/dp/08_palindromic_substrings"
   end
 end
