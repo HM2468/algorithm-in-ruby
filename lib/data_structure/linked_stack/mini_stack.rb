@@ -23,7 +23,7 @@
 =end
 
 
-module Algorithms
+module DataStructure
   module LinkedStack
     class MinStack
       def initialize

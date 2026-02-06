@@ -1,4 +1,4 @@
-module Algorithms
+module DataStructure
   module LinkedQueue
     Node = Struct.new(:val, :next)
 

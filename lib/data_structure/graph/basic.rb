@@ -1,4 +1,4 @@
-module Algorithms
+module DataStructure
   module Graph
     class Graph
       attr_reader :n, :adj

@@ -1,4 +1,4 @@
-module Algorithms
+module DataStructure
   module LinkedLists
     # 142. Linked List Cycle II
     # 有环则返回环的入口节点，没有则返回 nil

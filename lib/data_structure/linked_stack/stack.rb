@@ -1,4 +1,4 @@
-module Algorithms
+module DataStructure
   module LinkedStack
     Node = Struct.new(:val, :next)
 

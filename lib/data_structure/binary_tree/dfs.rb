@@ -7,7 +7,7 @@
     - 后序遍历（Postorder）：L -> R -> D
 =end
 
-module Algorithms
+module DataStructure
   module BinaryTree
 
     module RecursionDFS

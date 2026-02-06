@@ -1,4 +1,4 @@
-module Algorithms
+module DataStructure
   module BinaryTree
     Node = Struct.new(:val, :left, :right)
 

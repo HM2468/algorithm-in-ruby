@@ -1,4 +1,4 @@
-module Algorithms
+module DataStructure
   module LinkedLists
     # 判断链表是否为回文
     def palindrome?(head)

@@ -1,4 +1,4 @@
-module Algorithms
+module DataStructure
   module LinkedLists
     # 21. Merge Two Sorted Lists
     # l1, l2 都是升序链表，返回升序合并后的头结点

@@ -1,4 +1,4 @@
-module Algorithms
+module DataStructure
   module BinaryTree
     # 教科书风格的 AVL 平衡二叉搜索树
     class AvlTree

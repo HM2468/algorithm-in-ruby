@@ -29,7 +29,7 @@
     •	新入栈的下标 i 还没找到更暖的一天，先入栈，等后续天数来“结算”。
     •	这样每个下标最多进栈出栈各一次，复杂度 O(n)。
 =end
-module Algorithms
+module DataStructure
   module LinkedStack
     # @param {Integer[]} temperatures
     # @return {Integer[]}

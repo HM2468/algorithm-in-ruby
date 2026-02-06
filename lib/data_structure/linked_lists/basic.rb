@@ -1,6 +1,6 @@
-# file: lib/algorithms/linked-lists/basic.rb
+# file: lib/DataStructure/linked-lists/basic.rb
 
-module Algorithms
+module DataStructure
   module LinkedLists
     Node = Struct.new(:val, :next)
 

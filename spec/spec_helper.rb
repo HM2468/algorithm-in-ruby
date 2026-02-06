@@ -1,6 +1,7 @@
 # spec/spec_helper.rb
 require "bundler/setup"
 require "algorithms"
+require "data_structure"
 
 # 让 `lib` 自动加入 $LOAD_PATH
 ROOT = File.expand_path("..", __dir__)

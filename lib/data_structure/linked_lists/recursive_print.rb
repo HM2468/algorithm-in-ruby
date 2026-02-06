@@ -1,4 +1,4 @@
-module Algorithms
+module DataStructure
   module LinkedLists
     # 递归打印链表
     def recursive_print(head)

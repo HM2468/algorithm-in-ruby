@@ -1,4 +1,4 @@
-module Algorithms
+module DataStructure
   module BinaryTree
 
     # 广度优先遍历 / 层序遍历

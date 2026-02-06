@@ -1,4 +1,4 @@
-# file: lib/algorithms/linked-lists/reverse_k_group.rb
+# file: lib/DataStructure/linked-lists/reverse_k_group.rb
 
 =begin
     ### 题目要点
@@ -44,7 +44,7 @@
 
 =end
 
-module Algorithms
+module DataStructure
   module LinkedLists
     # 25. Reverse Nodes in k-Group
     # K 个一组反转链表

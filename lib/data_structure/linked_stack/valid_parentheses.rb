@@ -1,4 +1,4 @@
-module Algorithms
+module DataStructure
   module LinkedStack
 =begin
   LeetCode 20：
