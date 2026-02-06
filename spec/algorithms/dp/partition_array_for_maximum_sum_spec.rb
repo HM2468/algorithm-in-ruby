@@ -57,7 +57,7 @@ RSpec.describe DP::PartitionArrayForMaximumSum do
         it "handles typical cases" do
           expect(
             solver.public_send(method_name, [10, 9, 8, 7], 2)
-          ).to eq(10 + 9*2) # [10], [9,8], [7] is worse
+          ).to eq(36)
         end
       end
     end
