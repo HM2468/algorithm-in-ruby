@@ -17,10 +17,10 @@ module DataStructure
   end
 
   module LinkedStack
-    require_relative "data_structure/linked_stack/stack"
-    require_relative "data_structure/linked_stack/mini_stack"
-    require_relative "data_structure/linked_stack/valid_parentheses"
-    require_relative "data_structure/linked_stack/daily_temperature"
+    require_relative "data_structure/linked_stack/00_stack"
+    require_relative "data_structure/linked_stack/01_mini_stack"
+    require_relative "data_structure/linked_stack/02_valid_parentheses"
+    require_relative "data_structure/linked_stack/03_daily_temperature"
   end
 
   module BinaryTree
