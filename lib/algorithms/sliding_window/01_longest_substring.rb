@@ -51,7 +51,7 @@ module SlidingWindow
     #   s[left..right] contains no duplicate characters
     #
     # Time:  O(n)
-    # Space: O(min(n, charset))
+    # Space: O(min(n, charset_size))
     def length_of_longest_substring(s)
       raise ArgumentError, "s must be a String" unless s.is_a?(String)
       return 0 if s.empty?
@@ -62,12 +62,12 @@ module SlidingWindow
       best = 0
 
       (0...n).each do |right|
-        ch = s[right]
+        current_char = s[right]
         # If ch already exists in current window, move left pointer
-        if last_pos.key?(ch) && last_pos[ch] >= left
-          left = last_pos[ch] + 1
+        if last_pos.key?(current_char) && last_pos[current_char] >= left
+          left = last_pos[current_char] + 1
         end
-        last_pos[ch] = right
+        last_pos[current_char] = right
         best = [best, right - left + 1].max
       end
       best
