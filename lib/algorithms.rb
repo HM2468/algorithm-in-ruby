@@ -6,6 +6,7 @@ module Algorithms
 
   module SlidingWindow
     require_relative "algorithms/sliding_window/01_longest_substring"
+    require_relative "algorithms/sliding_window/02_minimum_size_subarray_sum"
   end
 
   module DP
